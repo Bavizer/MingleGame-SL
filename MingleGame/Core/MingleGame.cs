@@ -171,10 +171,13 @@ public sealed class MingleGame
             yield return Timing.WaitForSeconds(CalmPartDuration);
 
             OnStartingDangerPart();
-            yield return Timing.WaitForSeconds(DangerPartDuration + 0.5f); // Extra time to make transition smoother
+            yield return Timing.WaitForSeconds(DangerPartDuration);
+
+            OnEndingDangerPart();
+            yield return Timing.WaitForSeconds(3f);
 
             OnEndingGameRound();
-            yield return Timing.WaitForSeconds(2.5f);
+            yield return Timing.WaitForSeconds(2f);
         }
 
         EndEvent();
@@ -200,7 +203,7 @@ public sealed class MingleGame
         foreach (var player in Players)
         {
             player.EnableEffect<Ensnared>(duration: 2f);
-            player.Position = _gameLocation!.playerSpawnPoint.position;
+            player.Position = _gameLocation!.GetRandomSpawnPosition();
         }
     }
 
@@ -225,8 +228,10 @@ public sealed class MingleGame
         _gameLocation!.OnStartingDangerPart(DangerPartDuration);
     }
 
-    private void OnEndingGameRound()
+    private void OnEndingDangerPart()
     {
+        _gameLocation!.OnEndingDangerPart();
+
         _lastRoundSurvivors.Clear();
 
         foreach (var room in _gameLocation!.safeRooms)
@@ -238,12 +243,17 @@ public sealed class MingleGame
         foreach (var player in Players)
         {
             if (!_lastRoundSurvivors.Contains(player))
-                player.Kill(Config.InfoStrings.GameDeathReason);
+            {
+                Timing.CallDelayed(Random.Range(0f, 2.5f), () =>
+                    player.Kill(Config.InfoStrings.GameDeathReason));
+            }
         }
 
         RequiredPlayersInRoom = 0;
-        _gameLocation!.OnEndingGameRound();
     }
+
+    private void OnEndingGameRound()
+        => _gameLocation!.OnEndingGameRound();
 
     private void SetRandomRequiredPlayersAmountInRoom()
     {

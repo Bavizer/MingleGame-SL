@@ -23,12 +23,17 @@ public static class LocationTools
             Timing.RunCoroutine(SetLightIntensity_Coroutine(light, intensity, switchingDuration));
     }
 
-    public static void SwitchLightColors(LightSourceToy light, IEnumerable<Color> colors, float delta, float duration = 0)
+    public static void SwitchLightColors(LightSourceToy light, IEnumerable<Color> colors, float delta, float duration = 0, bool mustBeRandom = true)
     {
-        if (duration <= 0f)
-            light.NetworkLightColor = colors.Last();
+        if (duration > 0f)
+            Timing.RunCoroutine(SwitchLightColors_Coroutine(light, colors, delta, duration, mustBeRandom));
         else
-            Timing.RunCoroutine(SwitchLightColor_Coroutine(light, colors, delta, duration));
+        {
+            var colors1 = colors.ToArray();
+            light.NetworkLightColor = mustBeRandom 
+                                        ? colors1[Random.Range(0, colors1.Length - 1)] 
+                                        : colors1.Last();
+        }
     }
 
     private static IEnumerator<float> Rotate_Coroutine(Transform transform, Vector3 delta, float duration)
@@ -57,7 +62,7 @@ public static class LocationTools
         light.NetworkLightIntensity = intensity;
     }
 
-    private static IEnumerator<float> SwitchLightColor_Coroutine(LightSourceToy light, IEnumerable<Color> colors, float delta, float duration)
+    private static IEnumerator<float> SwitchLightColors_Coroutine(LightSourceToy light, IEnumerable<Color> colors, float delta, float duration, bool mustBeRandom)
     {
         var startTime = Time.time;
         var elapsedTime = 0f;
@@ -65,11 +70,20 @@ public static class LocationTools
         var colors1 = colors.ToArray();
         while (elapsedTime < duration)
         {
-            foreach (var color in colors1)
+            if (mustBeRandom)
             {
+                light.NetworkLightColor = colors1[Random.Range(0, colors1.Length - 1)];
                 yield return Timing.WaitForSeconds(delta);
-                light.NetworkLightColor = color;
                 elapsedTime = Time.time - startTime;
+            }
+            else
+            {
+                foreach (var color in colors1)
+                {
+                    light.NetworkLightColor = color;
+                    yield return Timing.WaitForSeconds(delta);
+                    elapsedTime = Time.time - startTime;
+                }
             }
         }
     }
