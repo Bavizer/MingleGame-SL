@@ -5,17 +5,8 @@ namespace MingleGame;
 
 internal class Config
 {
-    private const byte DEFAULT_MAX_PLAYERS_AMOUNT_PER_ROOM = 4;
-
     [Description("Position for game location to spawn.")]
     public Vector3 LocationSpawnPosition { get; set; } = new(15f, 240f, 60f);
-
-    [Description("Max possible players amount to be selected as required amount for each room.")]
-    public byte MaxPlayersAmountPerRoom
-    {
-        get;
-        set => field = value == 0 ? DEFAULT_MAX_PLAYERS_AMOUNT_PER_ROOM : value;
-    } = DEFAULT_MAX_PLAYERS_AMOUNT_PER_ROOM;
 
     [Description("Disable round lock after event ending? (true/false)")]
     public bool DisableRoundLockOnEnd { get; set; } = false;

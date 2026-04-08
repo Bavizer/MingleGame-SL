@@ -223,7 +223,7 @@ public sealed class MingleGame
         var message = Config.InfoStrings.RequiredPlayers.Replace("{players}", RequiredPlayersInRoom.ToString());
 
         foreach (var player in Player.ReadyList)
-            player.SendHint(message, 5);
+            player.SendHint(message, 5f);
 
         _gameLocation!.OnStartingDangerPart(DangerPartDuration);
     }
@@ -258,8 +258,9 @@ public sealed class MingleGame
     private void SetRandomRequiredPlayersAmountInRoom()
     {
         var playersAmount = Players.Count();
-        var maxPlayersInRoom = playersAmount > Config.MaxPlayersAmountPerRoom 
-                                ? Config.MaxPlayersAmountPerRoom 
+        var maxAllowedPlayersAmount = 4;
+        var maxPlayersInRoom = playersAmount > maxAllowedPlayersAmount
+                                ? maxAllowedPlayersAmount
                                 : playersAmount - 1;
 
         RequiredPlayersInRoom = maxPlayersInRoom == 1 
@@ -293,7 +294,7 @@ public sealed class MingleGame
         }
         winner?.SetRole(RoleTypeId.Tutorial);
 
-        var winnerString = winner == null ? "<color=white><u>undefined<u></color>" : winner.Nickname;
+        var winnerString = winner == null ? "<color=white><u>undefined</u></color>" : winner.Nickname;
         var gameEndMessage = Config.InfoStrings.GameEnd.Replace("{winner}", winnerString);
 
         Server.SendBroadcast(gameEndMessage, 10, shouldClearPrevious: true);
