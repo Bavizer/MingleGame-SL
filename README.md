@@ -52,19 +52,21 @@ To start or end the event you can use one of the methods below:
 
 ##
 
-Don't forget to put content from `Schematics` folder into your `Schematics` folder.
+Put content from `Schematics` folder into your `Schematics` folder.
 
 ##
 
 - [Installation Guide](https://github.com/northwood-studios/LabAPI/wiki/Installing-Plugins)  
 - [Configuration Guide](https://github.com/northwood-studios/LabAPI/wiki/Configuring-Plugins)
 
-# 👨‍💻 Authors
-Plugin and game location schematic originally created by [Bavizer](https://github.com/Bavizer/).
-
 # 🖼 Media
 
-https://github.com/user-attachments/assets/44d65b35-8788-48e5-8330-461c3a8be037
+https://github.com/user-attachments/assets/f8fe9484-0551-44d2-bac9-2e4448845869
 
-![MingleGame](https://github.com/user-attachments/assets/1613d6e2-d29d-44b5-a4be-8650b5f0840d)
-![MingleGame](https://github.com/user-attachments/assets/4b7cde3b-0eb9-424f-923e-b0f4d97b600a)
+![MingleGameV2](https://github.com/user-attachments/assets/01a7c18c-220c-4e7b-b890-2917a864765e)
+![MingleGameV2](https://github.com/user-attachments/assets/f52855c1-8f96-4729-ba48-79b5c12d32af)
+![MingleGameV2](https://github.com/user-attachments/assets/9be47dc7-cdca-42a0-a3cc-5998aa88a203)
+![MingleGameV2](https://github.com/user-attachments/assets/e7f626d3-3ede-4f40-82e2-ba11c9643673)
+![MingleGameV2](https://github.com/user-attachments/assets/006af441-2a84-45de-8972-4dcbbd649d6f)
+![MingleGameV2](https://github.com/user-attachments/assets/5bf454a7-158e-4bbd-bfe5-2fcc68c3a287)
+![MingleGameV2](https://github.com/user-attachments/assets/f06ae651-4b9a-4bfc-90b7-b1de0ba96c51)
