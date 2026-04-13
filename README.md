@@ -1,6 +1,6 @@
 # ℹ Mingle Game
 
-<img width="1440" height="810" alt="MingleGameV2Soon" src="https://github.com/user-attachments/assets/ec17df86-275b-45a0-9847-996aa091ff75" /><br>
+<img width="1440" height="810" alt="MingleGameV2" src="https://github.com/user-attachments/assets/fdfd732b-ec2c-493e-a79c-1a5ae11f78ae" />
 
 **A plugin for SCP: Secret Laboratory, that implements the Mingle Game inspired by Netflix series "Squid Game: Season 2":**
 - 🏠 Special schematic - Mingle Game location spawns in the game.
