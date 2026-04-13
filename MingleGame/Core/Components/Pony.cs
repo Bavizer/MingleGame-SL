@@ -2,6 +2,7 @@
 
 namespace MingleGame.Core.Components;
 
+[DisallowMultipleComponent]
 internal class Pony : MonoBehaviour
 {
     private Vector3? _currentTarget;

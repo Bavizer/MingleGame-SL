@@ -95,8 +95,9 @@ internal class MingleGameLocation
 
         _audioPlayer = AudioPlayer.CreateOrGet("MingleGameAudioPlayer", onIntialCreation: obj =>
         {
-            obj.AddSpeaker("MingleGameSpeaker", isSpatial: false, maxDistance: 50f);
-            obj.SetSpeakerPosition("MingleGameSpeaker", _location.transform.position);
+            var speakerName = "MingleGameSpeaker";
+            obj.AddSpeaker(speakerName, isSpatial: false, maxDistance: 50f);
+            obj.SetSpeakerPosition(speakerName, _location.transform.position);
             obj.transform.parent = _location.transform;
         });
     }
@@ -184,7 +185,7 @@ internal class MingleGameLocation
             room.IsDoorLocked = true;
         }
 
-        var duration = 1.5f;
+        var duration = 2.5f;
         _topLights.ForEach(l => LocationTools.SwitchLightColors(l, _dangerPartColors, 0.15f, duration));
         _ambientLights.ForEach(l => LocationTools.SwitchLightColors(l, _dangerPartColors, 0.15f, duration));
     }

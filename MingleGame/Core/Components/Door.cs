@@ -22,7 +22,6 @@ public class Door : MonoBehaviour, IInteractable
     public bool IsOpen => transform.localRotation == _openedRotation;
     public bool IsLocked { get; internal set; }
 
-
     private void Awake()
     {
         _coroutineTag = GetInstanceID().ToString() + "_RotateDoor";
