@@ -59,6 +59,31 @@ Put content from `Schematics` folder into your `Schematics` folder.
 - [Installation Guide](https://github.com/northwood-studios/LabAPI/wiki/Installing-Plugins)  
 - [Configuration Guide](https://github.com/northwood-studios/LabAPI/wiki/Configuring-Plugins)
 
+# 🛠 Config file
+```yaml
+# Position for game location to spawn.
+location_spawn_position:
+  x: 15
+  y: 240
+  z: 60
+# Disable round lock after event ending? (true/false)
+disable_round_lock_on_end: false
+audio_paths:
+# Game's calm part music path (.ogg only)
+  calm_part: CalmPart.ogg
+  # Game's danger part music path (.ogg only)
+  danger_part: DangerPart.ogg
+info_strings:
+  door_interaction_hint: <b><color=green>Press NoClip key <color=orange>(ALT by default)</color> to open/close doors</color></b>
+  full_room_door_interaction: <b>Room already has <color=orange>required players amount!</color></b>
+  locked_door: <b>Door is <color=red>locked!</color></b>
+  game_death_reason: <b><color=red>Didn't find a room with required players amount</color></b>
+  required_players: <color=red><b><size=80><voffset=800>{players} Player(-s)</voffset></size></b></color>
+  game_end: >-
+    <b>Event <color=orange>"Mingle Game"</color> has been ended
+    Winner is <color=red>{winner}</color></b>
+```
+
 # 🖼 Media
 
 https://github.com/user-attachments/assets/f8fe9484-0551-44d2-bac9-2e4448845869
